@@ -6,6 +6,7 @@ import nav1 from "../../assets/images/nav-1.png";
 import nav2 from "../../assets/images/nav-2.png";
 import nav3 from "../../assets/images/nav-3.png";
 import nav4 from "../../assets/images/nav-4.png";
+import { getCurrentcity } from "../../utils/index.js";
 const navs = [
   {
     id: 0,
@@ -41,16 +42,13 @@ export default class Index extends Component {
     news: [], //新闻列表
     cityname: ""
   };
-  componentDidMount() {
+  async componentDidMount() {
     this.getSwiperdata(); // 发送请求 获取轮播图数据
     this.getGroups(); ///租房小组
     this.getNews();
-    var myCity = new window.BMap.LocalCity();
-    myCity.get(result => {
-      var cityName = result.name;
-      this.setState({
-        cityname: cityName //设置城市
-      });
+    let dw = await getCurrentcity();
+    this.setState({
+      cityname: dw.label
     });
   }
   async getGroups() {

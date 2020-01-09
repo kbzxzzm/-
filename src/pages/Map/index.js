@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Header from "../../components/Header";
 
+import "./index.scss";
 // react 引入地图js后 BMap 必须加上window.BMap
 let BMap = window.BMap;
 export default class Map extends Component {
@@ -20,6 +22,7 @@ export default class Map extends Component {
     return (
       <div className="map">
         {/* 写一个div 用来放地图 */}
+        <Header>地图找房</Header>
         <div id="container"></div>
       </div>
     );

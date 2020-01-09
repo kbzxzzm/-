@@ -1,10 +1,11 @@
 /* eslint-disable no-lone-blocks */
 import React, { Component } from "react";
-import { NavBar, Icon } from "antd-mobile";
+import { NavBar, Icon, Toast } from "antd-mobile";
 import axios from "axios";
 import "./citylist.scss"; // 导入样式
 import { getCurrentcity } from "../../utils/index";
 import { List, AutoSizer } from "react-virtualized";
+import Header from "../../components/Header";
 export default class Citylist extends Component {
   state = {
     citylist: {},
@@ -78,7 +79,19 @@ export default class Citylist extends Component {
         <div className="title">{this.setword(word)}</div>
         {citys.map(item => {
           return (
-            <div key={item.value} className="name">
+            <div
+              key={item.value}
+              className="name"
+              onClick={() => {
+                const DATA = ["北京", "上海", "广州", "深圳"]; //有房源的数组
+                if (DATA.indexOf(item.label) !== -1) {
+                  localStorage.setItem("my-city", JSON.stringify(item)); //跳转前存入本地存储
+                  this.props.history.push("/home/index"); //数组中有该数据
+                } else {
+                  Toast.info("暂无房源"); //导入后使用 ,.loading
+                }
+              }}
+            >
               {item.label}
             </div>
           );
@@ -102,29 +115,28 @@ export default class Citylist extends Component {
           key={item}
           className={index === this.state.activeindex ? "green" : ""}
         >
-          {item}
+          {item === "hot" ? "热" : item.toUpperCase()}
         </li>
       );
     });
   };
-  onRowsRendered = (
-    overscanStartIndex: number,
-    overscanStopIndex: number,
-    startIndex: number, //开始的索引
-    stopIndex: number
-  ) => {};
+  onRowsRendered = ({
+    overscanStartIndex,
+    overscanStopIndex,
+    startIndex, //开始的索引
+    stopIndex //结束的索引
+  }) => {
+    if (startIndex !== this.state.activeindex) {
+      this.setState({
+        activeindex: startIndex //做一步优化，值改变了才去执行，函数防抖
+      });
+    }
+  };
   render() {
     return (
       <div className="citylist">
         {/* 导航 */}
-        <NavBar
-          className="navbar"
-          mode="light"
-          icon={<Icon type="left" />}
-          onLeftClick={() => this.props.history.go(-1)}
-        >
-          城市选择
-        </NavBar>
+        <Header>城市列表</Header>
         <AutoSizer>
           {/* 内容 */}
           {({ height, width }) => (
