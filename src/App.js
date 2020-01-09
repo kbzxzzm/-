@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import Map from "./pages/Map";
+// import { Button } from "antd-mobile";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Citylist from "./pages/Citylist";
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Route
+            exact
+            path="/"
+            render={props => {
+              return <Redirect to="/home/index"></Redirect>;
+            }}
+          />
+          <Route path="/home" component={Home}></Route>
+          <Route exact path="/citylist" component={Citylist}></Route>
+          <Route exact path="/map" component={Map}></Route>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

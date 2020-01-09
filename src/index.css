@@ -1,13 +1,72 @@
+/* 放全局初始化样式 */
+/* 
+  全局样式
+*/
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Microsoft YaHei';
+  color: #333;
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root,
+.App,
+.map,
+.home,
+.houselist,
+#container {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+* {
+  box-sizing: border-box;
+  /* 
+    解决 轮播图 手动滚动时，报错的问题：
+    https://www.jianshu.com/p/04bf173826aa
+    https://juejin.im/post/5ad804c1f265da504547fe68
+  */
+  touch-action: pan-y;
+}
+
+ul,
+p,
+dd,
+h1,
+h3 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.fixed {
+  overflow: hidden;
+}
+
+.loading {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.houseloading {
+  height: 115px;
+  background-color: #f6f5f6;
+}
+
+.StickyFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }

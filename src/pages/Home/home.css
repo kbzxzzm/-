@@ -1,0 +1,18 @@
+.home .iconfont {
+  font-size: 20px;
+}
+
+/* tabbar定位到底部 */
+.home .am-tab-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}
+
+/* 底部flex，遮住了，往上移动*/
+.home {
+  padding-bottom: 50px;
+
+}
