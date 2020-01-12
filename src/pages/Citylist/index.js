@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React, { Component } from "react";
-import { NavBar, Icon, Toast } from "antd-mobile";
+import { Toast } from "antd-mobile";
 import axios from "axios";
 import "./citylist.scss"; // 导入样式
 import { getCurrentcity } from "../../utils/index";

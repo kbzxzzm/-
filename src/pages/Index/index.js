@@ -51,6 +51,7 @@ export default class Index extends Component {
       cityname: dw.label
     });
   }
+
   async getGroups() {
     let res = await axios.get(
       "http://localhost:8080/home/groups?area=AREA%7C88cff55c-aaa4-e2e0" //id是北京的
