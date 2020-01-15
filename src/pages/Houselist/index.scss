@@ -1,0 +1,16 @@
+.header {
+  position: relative;
+  display: flex;
+  height: 45px;
+  align-items: center;
+  font-style: 12px;
+  background-color: #f6f5f6;
+  padding-left: 10px;
+  .iconfont .icon-back {
+    font-size: 16px;
+  }
+  .searchBox {
+    position: relative;
+    top: 0;
+  }
+}

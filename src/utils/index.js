@@ -1,5 +1,4 @@
 import axios from "axios"; //导入多个直接export  导入单个 export defult
-
 export let getCurrentcity = () => {
   //获取本地存储中的定位城市，因为它不仅仅是这一个地方会用到
   let city = JSON.parse(localStorage.getItem("my-city"));

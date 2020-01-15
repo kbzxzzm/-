@@ -40,8 +40,8 @@ export default class Citylist extends Component {
     //   cityindex: cityindex
     // });
     let hotres = await axios.get("http://localhost:8080/area/hot"); // console.log(hotres);//当前数据还差热门城市和定位城市，并且unshift添加前面位置
-    citylist["hot"] = hotres.data.body; //将数据赋值给citylist console.log(citylist); //{b: Array(3), a: Array(1), n: Array(6), c: Array(5), w: Array(6), …}
-    cityindex.unshift("hot"); //console.log(cityindex); //) ["hot", "a", "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "q", "s", "t", "w", "x", "y", "z"]
+    citylist["hot"] = hotres.data.body; //将数据赋值给citylist console.log(citylist); //{b: Array(3), a: Array(1), n: Array(6), c: Array(5), w: Array(6), …}
+    cityindex.unshift("hot"); //console.log(cityindex); //) ["hot", "a", "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "q", "s", "t", "w", "x", "y", "z"]
     let dw = await getCurrentcity();
     citylist["#"] = [dw];
     cityindex.unshift("#"); //在添加完成后执行修改值并赋值，解决

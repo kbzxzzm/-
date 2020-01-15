@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Carousel, Flex, Grid } from "antd-mobile";
-import axios from "axios";
+// import axios from "axios";
+import { API } from "../../utils/app"; //API就是配置好的axios
 import "./index.scss";
 import nav1 from "../../assets/images/nav-1.png";
 import nav2 from "../../assets/images/nav-2.png";
@@ -53,8 +54,11 @@ export default class Index extends Component {
   }
 
   async getGroups() {
-    let res = await axios.get(
-      "http://localhost:8080/home/groups?area=AREA%7C88cff55c-aaa4-e2e0" //id是北京的
+    // let res = await API.get(
+    //   "http://localhost:8080/home/groups?area=AREA%7C88cff55c-aaa4-e2e0" //id是北京的
+    // );
+    let res = await API.get(
+      "/home/groups?area=AREA%7C88cff55c-aaa4-e2e0" //id是北京的
     );
     if (res.data.status === 200) {
       this.setState(
@@ -69,7 +73,7 @@ export default class Index extends Component {
     }
   }
   async getSwiperdata() {
-    let res = await axios.get("http://localhost:8080/home/swiper");
+    let res = await API.get("/home/swiper");
     // console.log("轮播图数据", res);
     this.setState(
       {
@@ -124,9 +128,7 @@ export default class Index extends Component {
     });
   }
   async getNews() {
-    let res = await axios.get(
-      "http://localhost:8080/home/news?area=AREA%7C88cff55c-aaa4-e2e0"
-    );
+    let res = await API.get("/home/news?area=AREA%7C88cff55c-aaa4-e2e0");
     if (res.data.status === 200) {
       this.setState({
         news: res.data.body
